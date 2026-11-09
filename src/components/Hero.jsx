@@ -1,164 +1,44 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import Particles from "./Particles";
-import { Sun } from "lucide-react";
+import { ArrowRight, BatteryCharging, CarFront, Headset, House, Leaf, Sun } from "lucide-react";
 
-const HERO_IMG = "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1800&q=90";
-
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
-};
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25,0.46,0.45,0.94] } },
-};
+const services = [
+  { icon: Sun, label: "Solar panel", sub: "installation" },
+  { icon: BatteryCharging, label: "Battery storage", sub: "& backup" },
+  { icon: CarFront, label: "Electric vehicle", sub: "charging" },
+  { icon: House, label: "Energy-efficient", sub: "solutions" },
+  { icon: Headset, label: "Expert", sub: "support" },
+];
 
 export default function Hero() {
-  const [liveGen, setLiveGen] = useState(4.2);
-  const [isGenerating, setIsGenerating] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLiveGen(prev => {
-        const peak = 6.8 + Math.sin(Date.now() / 36000) * 1.2;
-        return isGenerating ? Number((peak * (0.6 + Math.random() * 0.4)).toFixed(1)) : prev;
-      });
-      setIsGenerating(Date.now() % 86400000 < 64800000); // Sim daylight 6am-6pm
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-<section
-      id="top"
-      className="relative overflow-hidden"
-      style={{ minHeight: "88dvh", display: "flex", alignItems: "center", position: "relative" }}
-    >
-      <Particles />
-      {/* Subtle background gradient — Apple-style */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background: "radial-gradient(ellipse 70% 55% at 65% -5%, rgba(48,209,88,0.10) 0%, transparent 65%)",
-        }}
-      />
-      {/* Subtle background gradient — Apple-style */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: "radial-gradient(ellipse 70% 55% at 65% -5%, rgba(48,209,88,0.10) 0%, transparent 65%)",
-        }}
-      />
-
-      <div className="section-shell relative z-10 grid w-full items-center gap-10 py-20 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-        {/* Text column */}
-        <motion.div variants={container} initial="hidden" animate="show" className="space-y-7">
-          <motion.div variants={fadeUp}>
-            <span className="tag">South African Solar Experts</span>
-          </motion.div>
-
-          <motion.h1
-            variants={fadeUp}
-            className="display-xl"
-            style={{ color: "var(--text)" }}
-          >
-            Energy that works{" "}
-            <span className="text-gradient">24 / 7.</span>
-          </motion.h1>
-
-          <motion.p
-            variants={fadeUp}
-            className="max-w-lg text-lg leading-relaxed sm:text-xl"
-            style={{ color: "var(--text-secondary)", letterSpacing: "-0.01em" }}
-          >
-            Ecozen Solar installs premium hybrid solar systems and portable backup power for South African homes and businesses.
-          </motion.p>
-
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-1">
-            <a href="#calculator" className="btn-primary">
-              Estimate Savings <ArrowRight size={15} />
-            </a>
-            <a href="#quote" className="btn-ghost">
-              Get a Quote
-            </a>
-          </motion.div>
-
-          {/* Stats row */}
-          <motion.div variants={fadeUp} className="grid grid-cols-3 gap-3 pt-2">
-            {[
-              { val: "500+", label: "Installs" },
-              { val: "4.8★", label: "Avg Rating" },
-              { val: "25yr",  label: "Warranty" },
-            ].map(({ val, label }) => (
-              <div
-                key={label}
-                className="glass-card px-4 py-3 text-center"
-                style={{ borderRadius: "0.875rem" }}
-              >
-                <p className="text-gradient text-xl font-bold" style={{ letterSpacing: "-0.02em" }}>{val}</p>
-                <p className="mt-0.5 text-xs font-medium" style={{ color: "var(--text-secondary)" }}>{label}</p>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Image column */}
-        <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.85, ease: [0.25,0.46,0.45,0.94], delay: 0.1 }}
-          className="relative"
-        >
-          {/* Glow halo */}
-          <div
-            className="pointer-events-none absolute -inset-8 rounded-3xl opacity-40"
-            style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(48,209,88,0.22) 0%, transparent 70%)", filter: "blur(24px)" }}
-          />
-
-          {/* Main image */}
-          <div
-            className="neon-border relative overflow-hidden"
-            style={{ borderRadius: "1.5rem" }}
-          >
-            <img
-              src={HERO_IMG}
-              alt="Modern South African home with solar panels"
-              className="w-full object-cover"
-              style={{ height: "clamp(300px, 45vw, 560px)" }}
-              loading="eager"
-            />
-            <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%)" }}
-            />
-          </div>
-
-          {/* Floating badge */}
-          <motion.div
-            animate={{ y: [0, -7, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="glass-card absolute -bottom-4 -left-3 flex items-center gap-3 px-4 py-3 z-10"
-            style={{ borderRadius: "1rem" }}
-          >
-            <span
-              className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-xl relative"
-              style={{ background: "#30d158" }}
-            >
-              <Sun className="h-5 w-5 text-white absolute" />
-            </span>
-            <div>
-              <p className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Live generation</p>
-              <p className="text-gradient-amber text-sm font-bold">
-                {liveGen.toFixed(1)} kW {isGenerating ? "now" : "today"}
-              </p>
+    <>
+      <section id="top" className="eco-hero">
+        <div className="eco-hero__image" aria-hidden="true" />
+        <div className="eco-hero__shade" aria-hidden="true" />
+        <div className="eco-hero__content">
+          <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} className="eco-hero__copy">
+            <span className="eco-eyebrow"><Leaf size={15} /> South African Solar Experts</span>
+            <h1>Powering a Brighter,<br />More Sustainable<br /><em>Future.</em></h1>
+            <p>EcoZen Solar installs premium hybrid solar systems and portable backup power for South African homes and businesses.</p>
+            <div className="eco-hero__actions">
+              <a className="eco-button eco-button--gold" href="#quote">Get a Quote <ArrowRight size={18} /></a>
+              <a className="eco-button eco-button--outline" href="#solutions">Explore Solutions <ArrowRight size={18} /></a>
             </div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+          <motion.div className="eco-hero__note" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .35, duration: .8 }}>
+            <span>Clean energy.</span><span>Greater tomorrow.</span><i />
+          </motion.div>
+        </div>
+        <div className="eco-servicebar">
+          {services.map(({ icon: Icon, label, sub }) => <div className="eco-servicebar__item" key={label}><Icon size={30} strokeWidth={1.6} /><span>{label}<small>{sub}</small></span></div>)}
+        </div>
+      </section>
+      <section className="eco-benefits section-shell">
+        <div className="eco-benefits__intro"><span className="eco-kicker">WHY CHOOSE ECOZEN?</span><h2>Smart solar solutions<br />for a greener tomorrow.</h2><p>Take control of your energy with systems designed around the way you live and work.</p></div>
+        <div className="eco-benefits__grid">
+          {[{ icon: Leaf, title: "Reduce electricity bills", text: "Use more of the energy you generate." }, { icon: Sun, title: "Lower your carbon footprint", text: "Make cleaner energy part of everyday life." }, { icon: House, title: "Energy independence", text: "Build resilience with solar and battery backup." }, { icon: ArrowRight, title: "A smarter investment", text: "Explore an energy solution suited to your property." }].map(({ icon: Icon, title, text }) => <article className="eco-benefit" key={title}><Icon size={27} /><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </section>
+    </>
   );
 }

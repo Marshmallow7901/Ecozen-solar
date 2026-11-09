@@ -374,3 +374,67 @@ input:focus, select:focus, textarea:focus {
   transform-origin: left;
   pointer-events: none;
 }
+
+/* ─── EcoZen premium visual refresh ───────────────────────── */
+:root { --green:#1f7046; --green-dark:#0b3028; --amber:#e7a52f; --bg:#fbfaf6; --bg-alt:#f1f3ed; --text:#14251f; --text-secondary:#64716a; --card-bg:rgba(255,255,255,.92); --card-border:rgba(18,53,39,.10); }
+body { background:var(--bg); }
+.section-shell { max-width:1320px; }
+.eco-nav { position:sticky; top:0; z-index:100; color:#f7f7f1; background:rgba(7,31,27,.96); border-bottom:1px solid rgba(255,255,255,.12); backdrop-filter:blur(18px); }
+.eco-nav__inner { width:min(100% - 48px, 1440px); min-height:88px; margin:auto; display:flex; align-items:center; justify-content:space-between; gap:26px; }
+.eco-brand { display:flex; align-items:center; gap:13px; border:0; background:none; color:white; cursor:pointer; text-align:left; flex-shrink:0; }
+.eco-brand img { width:55px; height:55px; object-fit:contain; }
+.eco-brand span { display:flex; flex-direction:column; line-height:1; letter-spacing:.09em; }
+.eco-brand b { font-size:22px; font-weight:800; }
+.eco-brand small { margin-top:5px; color:#e9ad38; font-size:12px; letter-spacing:.28em; }
+.eco-nav__links { display:flex; align-items:center; gap:clamp(12px,2vw,32px); }
+.eco-nav__links button,.eco-nav__solutions>a { border:0; background:none; color:rgba(255,255,255,.82); font-size:14px; font-weight:550; text-decoration:none; cursor:pointer; transition:color .2s; }
+.eco-nav__links button:hover,.eco-nav__solutions>a:hover,.eco-nav__links .is-active { color:#f2b63f; }
+.eco-nav__solutions { position:relative; }
+.eco-nav__solutions>a { display:flex; align-items:center; gap:5px; }
+.eco-nav__dropdown { display:none; position:absolute; top:28px; left:-18px; min-width:190px; padding:10px; border:1px solid rgba(255,255,255,.12); border-radius:14px; background:#102e27; box-shadow:0 18px 45px #0005; }
+.eco-nav__solutions:hover .eco-nav__dropdown,.eco-nav__solutions:focus-within .eco-nav__dropdown { display:grid; }
+.eco-nav__dropdown a,.eco-nav__dropdown button { padding:10px; color:#f7f7f1; font-size:13px; text-align:left; text-decoration:none; border-radius:8px; }
+.eco-nav__dropdown a:hover,.eco-nav__dropdown button:hover { background:#ffffff12; }
+.eco-nav__actions { display:flex; align-items:center; gap:14px; }
+.eco-theme { width:42px; height:42px; display:grid; place-items:center; color:white; background:transparent; border:1px solid #ffffff45; border-radius:50%; cursor:pointer; }
+.eco-button { display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:14px 23px; border-radius:999px; font-size:14px; font-weight:700; text-decoration:none; cursor:pointer; transition:transform .2s, box-shadow .2s, background .2s; }
+.eco-button:hover { transform:translateY(-2px); }
+.eco-button--gold { color:#17251e; background:linear-gradient(135deg,#f4c45a,#dc941e); border:1px solid #f6cb69; box-shadow:0 8px 24px #d99a302b; }
+.eco-button--outline { color:white; border:1px solid #ffffff8c; background:#071f1b55; }
+.eco-nav__quote { padding:13px 22px; }
+.eco-menu-toggle,.eco-mobile-menu { display:none; }
+.eco-hero { min-height:650px; position:relative; display:flex; align-items:center; overflow:hidden; color:white; background:#09251e; }
+.eco-hero__image { position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2200&q=90'); background-size:cover; background-position:center 54%; transform:scale(1.015); }
+.eco-hero__shade { position:absolute; inset:0; background:linear-gradient(90deg,rgba(4,27,21,.96) 0%,rgba(4,27,21,.86) 34%,rgba(4,27,21,.35) 64%,rgba(4,27,21,.04) 100%),linear-gradient(0deg,rgba(4,27,21,.48),transparent 40%); }
+.eco-hero__content { position:relative; z-index:2; width:min(100% - 48px,1320px); margin:0 auto; padding:95px 0 135px; }
+.eco-hero__copy { max-width:690px; }
+.eco-eyebrow { display:inline-flex; align-items:center; gap:9px; padding:9px 15px; color:#f8d88d; border:1px solid #e9b94f8a; border-radius:999px; background:#0c302c9c; font-size:13px; font-weight:650; }
+.eco-hero h1 { margin:25px 0 20px; color:#fff; font-size:clamp(48px,6.3vw,84px); line-height:.99; letter-spacing:-.055em; font-weight:800; }
+.eco-hero h1 em { color:#f0b33c; font-style:normal; }
+.eco-hero__copy>p { max-width:550px; color:#e0e7e1; font-size:18px; line-height:1.65; }
+.eco-hero__actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; }
+.eco-hero__note { position:absolute; right:1%; top:13%; display:flex; flex-direction:column; color:#0d3328; font-family:Georgia,serif; font-size:clamp(25px,3vw,42px); font-style:italic; line-height:1.15; transform:rotate(-5deg); text-shadow:0 1px 15px #fff8; }
+.eco-hero__note i { width:150px; height:13px; margin:9px 0 0 50px; border-top:4px solid #e6a52d; border-radius:50%; transform:rotate(-7deg); }
+.eco-servicebar { position:absolute; z-index:3; bottom:0; left:50%; width:min(100% - 48px,1320px); min-height:96px; display:grid; grid-template-columns:repeat(5,1fr); align-items:center; transform:translate(-50%,35%); border:1px solid #ffffff2a; border-radius:20px; background:rgba(8,36,29,.96); box-shadow:0 18px 45px #061d1740; }
+.eco-servicebar__item { min-height:52px; display:flex; align-items:center; justify-content:center; gap:15px; padding:12px 18px; color:#f1b63f; border-right:1px solid #ffffff55; }
+.eco-servicebar__item:last-child { border:0; }
+.eco-servicebar__item span { color:white; font-size:14px; font-weight:600; line-height:1.35; }
+.eco-servicebar__item small { display:block; color:#d0d9d2; font-size:13px; font-weight:400; }
+.eco-benefits { display:grid; grid-template-columns:.95fr 2fr; gap:45px; padding-top:120px; padding-bottom:75px; }
+.eco-kicker { color:#bd801b; font-size:13px; font-weight:800; letter-spacing:.08em; }
+.eco-benefits__intro h2 { margin:15px 0; color:#12372b; font-size:clamp(30px,3vw,43px); line-height:1.1; letter-spacing:-.04em; }
+.eco-benefits__intro p { max-width:390px; color:#6b766e; line-height:1.65; }
+.eco-benefits__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; }
+.eco-benefit { min-height:170px; padding:22px 18px; border:1px solid #e7e9e1; border-radius:18px; background:#fff; box-shadow:0 8px 25px #203b2410; }
+.eco-benefit svg { color:#397c43; }
+.eco-benefit h3 { margin:17px 0 7px; color:#1b2e25; font-size:16px; line-height:1.25; }
+.eco-benefit p { color:#758078; font-size:13px; line-height:1.5; }
+.dark .eco-benefits__intro h2 { color:#f1f4ee; }
+.dark .eco-benefit { background:#17241e; border-color:#ffffff1c; }
+.dark .eco-benefit h3 { color:#f1f4ee; }
+.dark .eco-benefit p { color:#b7c2b9; }
+.dark .eco-benefits { color:#f1f4ee; }
+@media(max-width:1050px) { .eco-nav__links { gap:12px; } .eco-nav__links button,.eco-nav__solutions>a { font-size:12px; } .eco-hero__note { right:3%; top:8%; } .eco-benefits { grid-template-columns:1fr; gap:25px; } }
+@media(max-width:800px) { .eco-nav__inner { width:calc(100% - 32px); min-height:76px; } .eco-nav__links,.eco-nav__quote { display:none; } .eco-menu-toggle { display:grid; place-items:center; width:42px; height:42px; color:white; background:#ffffff12; border:1px solid #ffffff30; border-radius:50%; } .eco-mobile-menu { display:grid; gap:4px; padding:12px 20px 20px; background:#0b2923; overflow:hidden; } .eco-mobile-menu>button:not(.eco-button),.eco-mobile-menu>a { padding:12px; color:white; border:0; background:transparent; text-align:left; text-decoration:none; font-size:15px; } .eco-mobile-menu .eco-button { margin-top:8px; } .eco-hero { min-height:690px; align-items:flex-end; } .eco-hero__image { background-position:62% center; } .eco-hero__shade { background:linear-gradient(0deg,rgba(4,27,21,.97) 0%,rgba(4,27,21,.83) 45%,rgba(4,27,21,.18) 100%); } .eco-hero__content { width:calc(100% - 40px); padding:220px 0 150px; } .eco-hero__copy { max-width:600px; } .eco-hero h1 { font-size:clamp(43px,10vw,68px); } .eco-hero__copy>p { font-size:16px; } .eco-hero__note { display:none; } .eco-servicebar { width:calc(100% - 32px); grid-template-columns:repeat(5,minmax(115px,1fr)); overflow-x:auto; min-height:88px; transform:translate(-50%,25%); } .eco-servicebar__item { gap:8px; padding:10px; } .eco-servicebar__item svg { width:23px; } .eco-servicebar__item span { font-size:12px; } .eco-servicebar__item small { font-size:11px; } .eco-benefits { padding-top:105px; padding-bottom:55px; } .eco-benefits__grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:480px) { .eco-brand img { width:43px; height:43px; } .eco-brand b { font-size:18px; } .eco-theme { width:38px; height:38px; } .eco-hero { min-height:650px; } .eco-hero__content { width:calc(100% - 36px); padding:200px 0 145px; } .eco-hero h1 { font-size:44px; } .eco-hero__actions { flex-direction:column; align-items:stretch; } .eco-button { width:100%; } .eco-servicebar { width:calc(100% - 22px); } .eco-benefits__grid { gap:9px; } .eco-benefit { min-height:165px; padding:16px 13px; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
